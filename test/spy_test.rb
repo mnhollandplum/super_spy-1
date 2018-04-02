@@ -11,6 +11,7 @@ class SpyTest < Minitest::Test
   end
   
   def test_a_spy_has_different_attributes
+    skip
     spy = Spy.new("Maxwell Smart", 75_000)
 
     assert_equal "Maxwell Smart", spy.name
