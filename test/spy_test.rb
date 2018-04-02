@@ -9,6 +9,13 @@ class SpyTest < Minitest::Test
     assert_equal "Cate Archer", spy.name
     assert_equal 100000, spy.salary
   end
+  
+  def test_a_spy_has_different_attributes
+    spy = Spy.new("Maxwell Smart", 75_000)
+
+    assert_equal "Maxwell Smart", spy.name
+    assert_equal 75000, spy.salary
+  end
 
   def test_a_spy_starts_with_no_licenses
     skip
