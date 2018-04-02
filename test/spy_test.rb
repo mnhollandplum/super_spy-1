@@ -11,6 +11,7 @@ class SpyTest < Minitest::Test
   end
 
   def test_a_spy_starts_with_no_licenses
+    skip
     spy = Spy.new("Cate Archer", 100_000)
 
     assert_equal [], spy.licenses
