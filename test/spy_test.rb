@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/spy.rb'
+require './lib/license.rb'
 
 class SpyTest < Minitest::Test
   def test_a_spy_has_attributes
@@ -22,4 +23,37 @@ class SpyTest < Minitest::Test
 
     assert_equal [], spy.licenses
   end
+
+  def test_can_add_license_to_spy
+    spy = Spy.new("Cate Archer", 100_000)
+    license_1 = License.new("to kill")
+    license_2 = License.new("to chill")
+    spy.add_license(license_1)
+    spy.add_license(license_2)
+    assert_equal ["to kill", "to chill"], spy.licenses
+  end
+
+  def test_licenses_are_added_successfully
+    spy = Spy.new("Cate Archer", 100_000)
+    license_1 = License.new("to kill")
+    license_2 = License.new("to chill")
+    spy.add_license(license_1)
+    spy.add_license(license_2)
+    assert_equal "License to kill added successfully.", spy.add_license(license_1)
+
+  end
+
+  def test_can_produce_spy_report
+    spy = Spy.new("Cate Archer", 100_000)
+    license_1 = License.new("to kill")
+    license_2 = License.new("to chill")
+    spy.add_license(license_1)
+    spy.add_license(license_2)
+    assert_equal "Name: Cate Archer
+    Qualifications:
+    - License to kill
+    - License to chill",
+    spy.report
+  end
+
 end
