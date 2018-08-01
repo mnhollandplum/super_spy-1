@@ -110,4 +110,48 @@ assert_equal "* Jemma Simmons
 * Leo Fitz", organization_2.to_ill
 end
 
+def test_can_calculate_average_salary
+  organization_1 = Organization.new("UNITY")
+  organization_2 = Organization.new("SHIELD")
+
+  spy_1 = Spy.new("Cate Archer", 100_000)
+  spy_2 = Spy.new("Jemma Simmons", 95_000)
+  spy_3 = Spy.new("Leo Fitz", 85_000)
+
+  organization_1.add_spy(spy_1)
+  organization_2.add_spy(spy_2)
+  organization_2.add_spy(spy_3)
+
+  assert_equal 100000, organization_1.average_salary
+end
+
+def test_can_determine_lowest_salary
+  organization_1 = Organization.new("UNITY")
+  organization_2 = Organization.new("SHIELD")
+
+  spy_1 = Spy.new("Cate Archer", 100_000)
+  spy_2 = Spy.new("Jemma Simmons", 95_000)
+  spy_3 = Spy.new("Leo Fitz", 85_000)
+
+  organization_1.add_spy(spy_1)
+  organization_2.add_spy(spy_2)
+  organization_2.add_spy(spy_3)
+
+  assert_equal [spy_3], organization_2.lowest_salary
+end
+
+def test_can_determine_highest_salary
+  organization_1 = Organization.new("UNITY")
+  organization_2 = Organization.new("SHIELD")
+
+  spy_1 = Spy.new("Cate Archer", 100_000)
+  spy_2 = Spy.new("Jemma Simmons", 95_000)
+  spy_3 = Spy.new("Leo Fitz", 85_000)
+
+  organization_1.add_spy(spy_1)
+  organization_2.add_spy(spy_2)
+  organization_2.add_spy(spy_3)
+
+  assert_equal [spy_2], organization_2.highest_salary
+end
 end
